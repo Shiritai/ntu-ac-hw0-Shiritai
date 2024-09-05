@@ -12,6 +12,7 @@ echo $_CMD >> ~/.zshrc
 
 pip install --user flit
 # install brili
+BRIL_REPO=$script_dir/bril
 deno install ${BRIL_REPO}/brili.ts
 
 # install flit and bril2xxx
