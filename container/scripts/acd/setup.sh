@@ -12,6 +12,7 @@ cp ${script_dir}/.acd.sh ~
 _CMD=$(echo -e "\nsource ~/.acd.sh\n")
 echo $_CMD >> ~/.bashrc
 echo $_CMD >> ~/.zshrc
+source ~/.acd.sh
 
 # prepare repo for installation
 mkdir -p ~/repos
@@ -21,13 +22,8 @@ sudo git clone https://github.com/sampsyo/bril.git $BRIL_REPO
 
 # install deno and brili
 curl -fsSL https://deno.land/install.sh | sh
-# temporary setup deno path
-export DENO_INSTALL="$HOME/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
-# install brili
 deno install ${BRIL_REPO}/brili.ts
 
 # install flit and bril2xxx
 pip install --user flit
-cd ${BRIL_REPO}/bril-txt && flit install --symlink
+cd ${BRIL_REPO}/bril-txt && flit install --symlink --user
