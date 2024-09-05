@@ -13,18 +13,21 @@ _CMD=$(echo -e "\nsource ~/.acd.sh\n")
 echo $_CMD >> ~/.bashrc
 echo $_CMD >> ~/.zshrc
 
-# install deno, flit, bril2xxx
+# prepare repo for installation
 mkdir -p ~/repos
 BRIL_REPO=~/repos/bril
 mkdir -p $BRIL_REPO
 sudo git clone https://github.com/sampsyo/bril.git $BRIL_REPO
-curl -fsSL https://deno.land/install.sh | sh
 
+# install deno and brili
+curl -fsSL https://deno.land/install.sh | sh
 # temporary setup deno path
 export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
-
+# install brili
 deno install ${BRIL_REPO}/brili.ts
+
+# install flit and bril2xxx
 pipx install flit
 cd ${BRIL_REPO}/bril-txt && flit install --symlink
