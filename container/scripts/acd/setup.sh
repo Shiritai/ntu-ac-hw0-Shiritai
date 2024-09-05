@@ -5,7 +5,7 @@ script_dir=$(realpath $(dirname $0))
 # install dependencies
 sudo apt update -y && \
     sudo apt upgrade -y && \
-    sudo apt install git curl unzip pipx -y
+    sudo apt install git curl unzip pip -y
 
 # setup shell (bash and zsh)
 cp ${script_dir}/.acd.sh ~
@@ -29,5 +29,5 @@ export PATH="$HOME/.local/bin:$PATH"
 deno install ${BRIL_REPO}/brili.ts
 
 # install flit and bril2xxx
-pipx install flit
+pip install --user flit
 cd ${BRIL_REPO}/bril-txt && flit install --symlink
