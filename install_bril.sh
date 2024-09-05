@@ -10,11 +10,10 @@ _CMD=$(echo -e "\nsource ~/.acd.sh\n")
 echo $_CMD >> ~/.bashrc
 echo $_CMD >> ~/.zshrc
 
-pip install --user flit
 # install brili
 BRIL_REPO=$script_dir/bril
 deno install ${BRIL_REPO}/brili.ts
 
 # install flit and bril2xxx
-pipx install flit
+pip install --user flit
 cd ${BRIL_REPO}/bril-txt && flit install --symlink --user
