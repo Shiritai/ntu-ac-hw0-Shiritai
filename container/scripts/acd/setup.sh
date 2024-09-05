@@ -8,9 +8,7 @@ sudo apt update -y && \
     sudo apt install git curl unzip pipx -y
 
 # setup shell (bash and zsh)
-_ACD_SRC=${script_dir}/.acd.sh
-${_ACD_SRC} # run once to apply change immediately
-cp ${_ACD_SRC} ~
+cp ${script_dir}/.acd.sh ~
 _CMD=$(echo -e "\nsource ~/.acd.sh\n")
 echo $_CMD >> ~/.bashrc
 echo $_CMD >> ~/.zshrc
@@ -21,6 +19,12 @@ BRIL_REPO=~/repos/bril
 mkdir -p $BRIL_REPO
 sudo git clone https://github.com/sampsyo/bril.git $BRIL_REPO
 curl -fsSL https://deno.land/install.sh | sh
+
+# temporary setup deno path
+export DENO_INSTALL="$HOME/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+
 deno install ${BRIL_REPO}/brili.ts
 pipx install flit
-cd ${BRIL_REPO}/bril-txt && ~/.local/bin/flit install --symlink
+cd ${BRIL_REPO}/bril-txt && flit install --symlink
