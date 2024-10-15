@@ -1,3 +1,6 @@
 [submodule "bril"]
 	path = bril
 	url = https://github.com/sampsyo/bril.git
+[submodule "oh-my-scripts"]
+	path = oh-my-scripts
+	url = https://github.com/Shiritai/oh-my-scripts.git
