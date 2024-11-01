@@ -30,3 +30,11 @@ cd ${BRIL_REPO}/bril-txt && flit install --symlink --user
 
 # install needed packages
 pip install click tomlkit
+
+# install TypeScript-to-Bril Compiler & brilck
+deno install -g --allow-env --allow-read ts2bril.ts
+deno install -g --allow-env --allow-read brilck.ts
+
+# install hyperfine
+sudo wget https://github.com/sharkdp/hyperfine/releases/download/v1.16.1/hyperfine_1.16.1_amd64.deb
+sudo dpkg -i hyperfine_1.16.1_amd64.deb
